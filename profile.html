@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <title>Санкт‑Петербургский Красный Крест</title>
+</head>
+<style>
+    label {    
+        display: block;
+        margin-bottom: 8px;
+        color: #ff4444;
+        font-weight: bold;
+    }
+    input, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ffcccc;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 25px;
+        background: linear-gradient(45deg, #ff6666, #ff4444);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    button {
+        background: linear-gradient(45deg, #ff6666, #ff4444);
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        width: 100%;
+        transition: opacity 0.3s;
+    }
+
+.button:hover {
+opacity: 0.9;
+}
+
+</style>
+<body>
+    <header>
+        <div class="logo">
+            <a href="./main_page.html" style="width: 100%; height: 100%;"> <div style="height: 100%; width: 100%;"></div></a>
+        </div>
+        
+        <nav>
+            <a href="./about_us.html">О нас</a>
+            <a href="./news.html">Новости</a>
+            <a href="./contacts.html">Контакты</a>
+            <a href="tel:+71234567890" class="phone">8-800-234-07-07</a>
+        </nav>
+        <a href="./profile.html" class="profile-icon">
+            <i class="fas fa-user"></i>
+        </a>
+    </header>
+    <section class="section">
+        <form class="contact-form roboto-1" style="margin: 0 auto;">
+            <h1>Свяжитесь с нами</h1>
+            
+            <div class="form-group">
+                <label for="name">Ваше имя (макс. 50 символов):</label>
+                <input type="text" id="name" name="name" required maxlength="50">
+            </div>
+    
+            <div class="form-group">
+                <label for="email">Ваш Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="phone">Ваш телефон (начинается с +7):</label>
+                <input type="tel" id="phone" name="phone" pattern="^\+7\d{10}$" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="message">Ваше сообщение (макс. 300 символов):</label>
+                <textarea id="message" name="message" required maxlength="300" rows="5"></textarea>
+            </div>
+    
+            <div class="form-group">
+                <label for="captcha">Пожалуйста, решите задачу 7+10:</label>
+                <input type="number" id="captcha" name="captcha" required>
+                <div class="captcha-note">Введите числовой ответ</div>
+            </div>
+    
+            <button type="submit">Отправить сообщение</button>
+        </form>
+    </section>
+</body>
+</html>

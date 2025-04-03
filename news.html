@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="./css/chat.css">
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <title>Санкт‑Петербургский Красный Крест</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="./main_page.html" style="width: 100%; height: 100%;"> <div style="height: 100%; width: 100%;"></div></a>
+        </div>
+        
+        <nav>
+            <a href="./about_us.html">О нас</a>
+            <a href="./news.html">Новости</a>
+            <a href="./contacts.html">Контакты</a>
+            <a href="tel:+71234567890" class="phone">8-800-234-07-07</a>
+        </nav>
+        <a href="./profile.html" class="profile-icon">
+            <i class="fas fa-user"></i>
+        </a>
+    </header>
+    <section class="section">
+        <div class="container" style="margin: 0 auto;">
+            <div class="box">
+                <div class="news-item">
+                    <div alt="Новость" class="news-image" style="background-image: url('./img/img2.webp');">
+                    </div>
+                    <div class="news-content">
+                        <p>На треть больше запросов на психологическую поддержку поступило на горячую линию Российского Красного Креста в 2024 году</p>
+                        <div class="actions">
+                            <button class="btn like-btn" onclick="toggleLike(this)">
+                                <span class="like-count">0</span> ❤️
+                            </button>
+                            <button class="btn" onclick="showCommentModal()">💬 Комментировать</button>
+                            <button class="btn" onclick="copyLink()">↪️ Репост</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="news-item">
+                    <div alt="Новость" class="news-image" style="background-image: url('./img/img1.webp');"></div>
+                    <div class="news-content">
+                        
+                        <p>Более 30 тысяч человек примут участие во Всероссийской акции по профилактике туберкулеза Российского Красного Креста</p>
+                        <div class="actions">
+                            <button class="btn like-btn" onclick="toggleLike(this)">
+                                <span class="like-count">0</span> ❤️
+                            </button>
+                            <button class="btn" onclick="showCommentModal()">💬 Комментировать</button>
+                            <button class="btn" onclick="copyLink()">↪️ Репост</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="news-item">
+                    <div alt="Новость" class="news-image" style="background-image: url('./img/img3.webp'); background-size: 90%;">
+                    </div>
+                    <div class="news-content">
+                        <p>Российский Красный Крест приглашает на благотворительный чемпионат по зимним видам спорта «Золотая Шория»</p>
+                        <div class="actions">
+                            <button class="btn like-btn" onclick="toggleLike(this)">
+                                <span class="like-count">0</span> ❤️
+                            </button>
+                            <button class="btn" onclick="showCommentModal()">💬 Комментировать</button>
+                            <button class="btn" onclick="copyLink()">↪️ Репост</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="news-item">
+                    <div alt="Новость" class="news-image" style="background-image: url('./img/img4.webp');">
+                    </div>
+                    <div class="news-content">
+                        <p>Международный Комитет Красного Креста поддержит проекты Российского Красного Креста в рамках соглашения о сотрудничестве на 2025 год</p>
+                        <div class="actions">
+                            <button class="btn like-btn" onclick="toggleLike(this)">
+                                <span class="like-count">0</span> ❤️
+                            </button>
+                            <button class="btn" onclick="showCommentModal()">💬 Комментировать</button>
+                            <button class="btn" onclick="copyLink()">↪️ Репост</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </section>
+    <div class="modal" id="commentModal">
+        <div class="modal-content">
+            <h3>Добавить комментарий</h3>
+            <textarea class="comment-input" placeholder="Введите ваш комментарий"></textarea>
+            <button class="btn" onclick="postComment()">Отправить</button>
+            <br>
+            <button class="btn" onclick="hideCommentModal()">Закрыть</button>
+        </div>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">Поддержка</div>
+            <div class="close-btn" id="closeBtn">×</div>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message support-message">Здравствуйте! Чем можем помочь?</div>
+        </div>
+        <div class="chat-input">
+            <input class="chat_input" type="text" id="messageInput" placeholder="Введите сообщение...">
+            <button class="chat_btn" onclick="sendMessage()">Отправить</button>
+        </div>
+    </div>
+
+    <script>
+        const chatContainer = document.getElementById('chatContainer');
+        setTimeout(() => {
+            chatContainer.classList.add('visible');
+        }, 500);
+        document.getElementById('closeBtn').addEventListener('click', () => {
+            chatContainer.classList.remove('visible');
+            setTimeout(() => {
+                chatContainer.style.display = 'none';
+            }, 300);
+        });
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                const messagesContainer = document.getElementById('chatMessages');
+                const userMessage = document.createElement('div');
+                userMessage.className = 'message user-message';
+                userMessage.textContent = message;
+                messagesContainer.appendChild(userMessage);
+                input.value = '';
+                
+                setTimeout(() => {
+                    const supportMessage = document.createElement('div');
+                    supportMessage.className = 'message support-message';
+                    supportMessage.textContent = 'Благодарим за обращение. Мы ответим в ближайшее время.';
+                    messagesContainer.appendChild(supportMessage);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, 1000);
+                
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        }
+
+        document.getElementById('messageInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+    <script>
+        function toggleLike(button) {
+            const counter = button.querySelector('.like-count');
+            const isLiked = button.classList.toggle('liked');
+            counter.textContent = isLiked ? 
+                parseInt(counter.textContent) + 1 : 
+                parseInt(counter.textContent) - 1;
+        }
+        function showCommentModal() {
+            document.getElementById('commentModal').style.display = 'flex';
+        }
+
+        function hideCommentModal() {
+            document.getElementById('commentModal').style.display = 'none';
+        }
+
+        function postComment() {
+            alert('Комментарий отправлен!');
+            hideCommentModal();
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href)
+                .then(() => alert('Ссылка скопирована!'))
+                .catch(() => alert('Ошибка копирования'));
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('commentModal');
+            if (event.target === modal) {
+                hideCommentModal();
+            }
+        }
+    </script>
+</body>
+</html>
